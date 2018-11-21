@@ -5,14 +5,45 @@ html, body {
     margin: 0;
   }
 
+body {
+  display: grid;
+  grid-template-columns: 2fr 3fr ;
+  background-color: rgb(54,57,63);
+}
+
+.interview{
+  background-color: rgb(54,57,63);
+  padding: 1em;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 100%;
+} 
+
+.name{
+  font-weight: bold;
+  text-decoration: underline;
+  margin-right: 1em;
+}
+
+input {
+    background-color: rgb(40,43,48) ;
+    color:white;
+    border-style : none;
+    font-family: 'Roboto Condensed';
+    font-size: 22px;
+    line-height: 32px;
+    letter-spacing: 8px;
+    color: #fff;
+    width: 350px;
+}
+
 .flex-container{
-    background-color: rgb(20,20,20);
+    background-color: rgb(40,43,48) ;
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
     overflow: hidden;
     text-align:center;
-    width: 500px;
     padding: 50px;
     padding-left: 100px;
     height: 100%;
@@ -28,7 +59,7 @@ html, body {
     stroke-dashoffset: -600;
     stroke-width: 8px;
     fill: transparent;
-    stroke: #ef3ed4;
+    stroke: #88efdc;
     border-bottom: 5px solid black;
     transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
   }
@@ -69,7 +100,7 @@ a::before {
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  background: linear-gradient(135deg, #6e8efb, #88efdc);
   border-radius: 4px;
   transition: box-shadow .5s ease, -webkit-transform .2s ease;
   transition: box-shadow .5s ease, transform .2s ease;
@@ -94,4 +125,15 @@ a::after {
   will-change: transform;
   -webkit-transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
           transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+}
+
+p{
+  color: #dcddde;
+}
+
+@media screen and (max-width: 1300px){
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr ;
+  }
 }
