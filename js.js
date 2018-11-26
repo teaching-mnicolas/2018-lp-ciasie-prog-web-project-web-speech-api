@@ -1,14 +1,29 @@
+
+let bouton = false;
+let compteur = 1;
+
+
 $('.switch').click(function(){
 
-  if ($('.selected').find('input').val().length > 1){
+  if ($('.selected').find('input').val().length > 1 && bouton)  {
 
-    $('.interview').append('<p><span class="name">' + $('.selected').find('input').val()  + '</span></p>')
+    $('.interview').append('<p><span class="name">' + $('.selected').find('input').val()  + '</span>' + '<span class="final" id="txt'+compteur+'">'+ final_transcript +'</span>' +'<span class="mic" onclick="speak('+ compteur +')"><i class="material-icons">headset_mic</i></span></p>')
     $('#1').toggleClass('selected');
     $('#2').toggleClass('selected');
-
+    final_transcript = "";
+    $('.switch').attr("disabled", "disabled");
+    bouton = false;
+    compteur ++;
   }
+
+});
+
+
   var final_transcript = '';
   var recognizing = false;
+
+
+
 
   if ('webkitSpeechRecognition' in window) {
 
@@ -37,11 +52,11 @@ $('.switch').click(function(){
         } else {
           interim_transcript += event.results[i][0].transcript;
         }
+        $('.current').html(interim_transcript)
       }
       final_transcript = capitalize(final_transcript);
-      final_span.innerHTML = linebreak(final_transcript);
-      interim_span.innerHTML = linebreak(interim_transcript);
       console.log(final_transcript);
+      bouton = true;
       
     };
   }
@@ -57,15 +72,35 @@ $('.switch').click(function(){
   }
 
   function startDictation(event) {
-    if (recognizing) {
-      recognition.stop();
-      return;
-    }
+
     final_transcript = '';
     recognition.lang = 'fr-FR';
     recognition.start();
-    final_span.innerHTML = '';
-    interim_span.innerHTML = '';
   }
 
-  });
+  startDictation();
+
+
+
+function speak(id){
+
+
+
+  let text = $('#txt' + id).html()
+
+  console.log(id);
+
+  let synth = window.speechSynthesis;
+
+  let voiceSelect = "Microsoft Hortense Desktop - French (fr-FR)"
+
+
+  let utterThis = new SpeechSynthesisUtterance(text);
+
+
+  utterThis.pitch = 1
+  utterThis.rate = 1
+  synth.speak(utterThis);
+}
+
+

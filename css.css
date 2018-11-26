@@ -137,3 +137,12 @@ p{
     grid-template-rows: 1fr 1fr ;
   }
 }
+
+.mic{
+  cursor: pointer;
+  transition: 0.5s
+}
+
+.mic:hover{
+  color:red;
+}
