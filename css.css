@@ -17,6 +17,7 @@ body {
   overflow-y: scroll;
   scroll-behavior: smooth;
   height: 100%;
+  font-size: 1.5em;
 } 
 
 .name{
