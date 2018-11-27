@@ -52,7 +52,7 @@ $('.switch').click(function(){
         } else {
           interim_transcript += event.results[i][0].transcript;
         }
-        $('.current').html(interim_transcript)
+        $('.current').html('<p>' + interim_transcript + '</p>')
       }
       final_transcript = capitalize(final_transcript);
       console.log(final_transcript);
